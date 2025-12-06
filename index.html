@@ -1,40 +1,301 @@
-<!doctype html>
-<html>
-
-<head>
-    <title>V2 Javascript MVC</title>
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Declan Nishiyama - Contact & Links</title>
+    <meta
+      name="description"
+      content="Connect with Declan Nishiyama. CEO at Mountain Dev."
+    />
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: #0a1e29;
+        min-height: 100vh;
+      }
+
+      main {
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 28rem;
+      }
+
+      .card {
+        background: #133649;
+        border-radius: 24px;
+        border: 4px solid #111827;
+        padding: 32px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        position: relative;
+      }
+
+      .profile-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .profile-image-wrapper {
+        position: relative;
+        width: 96px;
+        height: 96px;
+        margin-bottom: 16px;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 4px solid #111827;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      .profile-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+
+      .profile-name {
+        color: #fef3c7;
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .profile-title {
+        color: #71717a;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      .links-section {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .link-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: #fef3c7;
+        color: #111827;
+        padding: 14px 24px;
+        border-radius: 9999px;
+        border: 3px solid #111827;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+
+      .link-button:hover {
+        background: #fb923c;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      .link-button:active {
+        transform: translateY(0);
+      }
+
+      .link-icon {
+        width: 20px;
+        height: 20px;
+        stroke-width: 2;
+        stroke: currentColor;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      @media (max-width: 640px) {
+        .card {
+          padding: 24px;
+        }
+
+        .profile-name {
+          font-size: 20px;
+          line-height: 28px;
+        }
+
+        .link-button {
+          padding: 12px 20px;
+          font-size: 14px;
+        }
+      }
     </style>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="card">
+          <!-- Profile Section -->
+          <div class="profile-section">
+            <div class="profile-image-wrapper">
+              <img
+                src="Declan-Nishiyama.jpeg"
+                alt="Declan Nishiyama"
+                class="profile-image"
+              />
+            </div>
+            <h1 class="profile-name">Declan Nishiyama</h1>
+            <p class="profile-title">Mountain Dev - CEO</p>
+          </div>
 
-</head>
+          <!-- Links Section -->
+          <div class="links-section">
+            <a
+              href="https://app.usemotion.com/meet/dgn/mtg?d=25"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link-button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="link-icon"
+                aria-hidden="true"
+              >
+                <path d="M8 2v4"></path>
+                <path d="M16 2v4"></path>
+                <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                <path d="M3 10h18"></path>
+              </svg>
+              <span>Book a Meeting</span>
+            </a>
 
+            <a
+              href="https://linkedin.com/in/declan-nishiyama"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link-button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="link-icon"
+                aria-hidden="true"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
 
-<body>
+            <a href="mailto:declan@mtndev.com" class="link-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="link-icon"
+                aria-hidden="true"
+              >
+                <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              </svg>
+              <span>Email Me</span>
+            </a>
 
-    <div class="js-container">
+            <a
+              href="https://mtndev.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link-button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="link-icon"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path
+                  d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"
+                ></path>
+                <path d="M2 12h20"></path>
+              </svg>
+              <span>Website</span>
+            </a>
 
-        <input type="text" class="js-task-textbox">
-        <input type="button" class="js-add-task-button" value="Add Task">
-
-        <div class="js-tasks-container"></div>
-        <!-- end tasks -->
-        <input type="button" class="js-complete-task-button" value="Complete Tasks">
-        <input type="button" class="js-delete-task-button" value="Delete Tasks">
-
-    </div>
-    <!-- end js-container -->
-
-
-
-    <script src="EventDispatcher.js"></script>
-    <script src="TaskModel.js"></script>
-    <script src="TaskView.js"></script>
-    <script src="TaskController.js"></script>
-    <script src="App.js"></script>
-
-</body>
-
+            <a href="calendar.html" class="link-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="link-icon"
+                aria-hidden="true"
+              >
+                <path d="M8 2v4"></path>
+                <path d="M16 2v4"></path>
+                <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                <path d="M3 10h18"></path>
+              </svg>
+              <span>View Calendar</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

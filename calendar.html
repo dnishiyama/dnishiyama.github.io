@@ -268,6 +268,31 @@
       .notes-section strong {
         color: #92400e;
       }
+
+      .copy-json-btn {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-bottom: 16px;
+      }
+
+      .copy-json-btn:hover {
+        background: #1d4ed8;
+      }
+
+      .copy-json-btn:active {
+        background: #1e40af;
+      }
+
+      .copy-json-btn.success {
+        background: #16a34a;
+      }
     </style>
   </head>
   <body>
@@ -280,6 +305,10 @@
       <div class="calendar" id="calendar"></div>
 
       <div class="controls">
+        <button class="copy-json-btn" onclick="copyEventsJSON()">
+          📋 Copy Events as JSON
+        </button>
+
         <div class="legend">
           <div class="legend-item">
             <div class="legend-color event-meeting"></div>
@@ -807,7 +836,7 @@
                   event.startHour + Math.floor(event.duration / 60),
                   event.startMin + (event.duration % 60)
                 )}${event.description ? `\n${event.description}` : ""}`;
-                
+
                 eventDiv.title = hoverText;
 
                 eventDiv.innerHTML = `
@@ -817,9 +846,9 @@
                     event.startHour,
                     event.startMin
                   )}-${formatTime(
-                    event.startHour + Math.floor(event.duration / 60),
-                    event.startMin + (event.duration % 60)
-                  )}</div>
+                  event.startHour + Math.floor(event.duration / 60),
+                  event.startMin + (event.duration % 60)
+                )}</div>
                 </div>
                 ${
                   event.description && event.duration > 30
@@ -887,13 +916,19 @@
 
         // Log calculations for verification
         console.log("Stats Calculation:", {
-          external: `${externalHours.toFixed(1)}h (${externalEvents.length} events)`,
-          internal: `${internalHours.toFixed(1)}h (${internalEvents.length} events)`,
+          external: `${externalHours.toFixed(1)}h (${
+            externalEvents.length
+          } events)`,
+          internal: `${internalHours.toFixed(1)}h (${
+            internalEvents.length
+          } events)`,
           focus: `${focusHours.toFixed(1)}h (${focusEvents.length} events)`,
           admin: `${adminHours.toFixed(1)}h (${adminEvents.length} events)`,
           breaks: `${breakHours.toFixed(1)}h (${breakEvents.length} events)`,
-          personal: `${personalHours.toFixed(1)}h (${personalEvents.length} events)`,
-          total: `${totalHours.toFixed(1)}h`
+          personal: `${personalHours.toFixed(1)}h (${
+            personalEvents.length
+          } events)`,
+          total: `${totalHours.toFixed(1)}h`,
         });
 
         document.getElementById("stat-external").textContent =
@@ -914,6 +949,33 @@
 
       // Initialize
       renderCalendar();
+
+      // Copy events as JSON
+      function copyEventsJSON() {
+        // Transform events to use day names instead of numbers
+        const eventsWithDayNames = events.map((event) => ({
+          ...event,
+          day: days[event.day],
+        }));
+
+        const json = JSON.stringify(eventsWithDayNames, null, 2);
+        navigator.clipboard
+          .writeText(json)
+          .then(() => {
+            const btn = document.querySelector(".copy-json-btn");
+            const originalText = btn.textContent;
+            btn.textContent = "✓ Copied!";
+            btn.classList.add("success");
+            setTimeout(() => {
+              btn.textContent = originalText;
+              btn.classList.remove("success");
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Failed to copy:", err);
+            alert("Failed to copy to clipboard");
+          });
+      }
     </script>
   </body>
 </html>
